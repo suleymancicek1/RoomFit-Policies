@@ -7,106 +7,234 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #1e293b;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 20px;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
             background: white;
-            min-height: 100vh;
-        }
-        h1 { color: #1e3a8a; margin-bottom: 10px; }
-        h2 { color: #1e40af; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid #dbeafe; padding-bottom: 5px; }
-        h3 { color: #3b82f6; margin-top: 20px; margin-bottom: 10px; }
-        p { margin-bottom: 15px; }
-        ul { margin-left: 25px; margin-bottom: 15px; }
-        li { margin-bottom: 5px; }
-        .last-updated { color: #6b7280; font-size: 14px; margin-bottom: 30px; }
-        .contact-box {
-            background: #eff6ff;
-            border-left: 4px solid #3b82f6;
-            padding: 15px;
-            margin: 20px 0;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         .lang-switch {
-            text-align: right;
-            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: flex-end;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
         }
         .lang-switch a {
+            padding: 6px 12px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #475569;
+            transition: all 0.2s;
+        }
+        .lang-switch a:hover {
+            background: #3b82f6;
+            color: white;
+        }
+        .lang-switch a.active {
+            background: #1e3a8a;
+            color: white;
+        }
+        h1 {
+            color: #1e3a8a;
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .last-updated {
+            color: #64748b;
+            font-size: 15px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        h2 {
+            color: #1e40af;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #dbeafe;
+        }
+        h3 {
+            color: #3b82f6;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #334155;
+        }
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            color: #475569;
+            line-height: 1.7;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 5px solid #3b82f6;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        .highlight-box h3 {
+            color: #1e3a8a;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+        .highlight-box p {
+            margin-bottom: 0;
+            color: #1e40af;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        .warning-box h3 {
+            color: #92400e;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+        .warning-box p, .warning-box li {
+            color: #78350f;
+        }
+        .contact-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 5px solid #22c55e;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        .contact-box h3 {
+            color: #166534;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .contact-box p {
+            margin-bottom: 8px;
+            color: #15803d;
+        }
+        strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        a {
             color: #3b82f6;
             text-decoration: none;
-            margin-left: 15px;
+            font-weight: 500;
         }
-        .lang-switch a:hover { text-decoration: underline; }
-        strong { color: #1e3a8a; }
-        hr { border: none; border-top: 1px solid #e5e7eb; margin: 30px 0; }
+        a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #e2e8f0;
+            margin: 50px 0;
+        }
         .footer {
             text-align: center;
-            color: #6b7280;
-            font-size: 14px;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #e5e7eb;
+            color: #64748b;
+            font-size: 15px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            h1 { font-size: 28px; }
+            h2 { font-size: 20px; }
+            .lang-switch { justify-content: center; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="lang-switch">
-            <a href="index.html">🇹🇷 Türkçe</a>
+            <a href="index.html" class="active">🇹🇷 Türkçe</a>
             <a href="index-en.html">🇬🇧 English</a>
+            <a href="index-de.html">🇩🇪 Deutsch</a>
+            <a href="index-es.html">🇪🇸 Español</a>
+            <a href="index-fr.html">🇫🇷 Français</a>
+            <a href="index-ru.html">🇷🇺 Русский</a>
+            <a href="index-zh.html">🇨🇳 中文</a>
+            <a href="index-ar.html">🇸🇦 العربية</a>
         </div>
 
         <h1>RoomFit Gizlilik Politikası</h1>
-        <p class="last-updated"><strong>Son güncelleme:</strong> 17 Kasım 2026</p>
+        <p class="last-updated"><strong>Son güncelleme:</strong> 19 Kasım 2026</p>
 
         <h2>1. Giriş</h2>
-        <p><strong>RoomFit</strong> ("biz", "uygulama"), yapay zekâ destekli oda yerleşimi uygulamasıdır. Bu gizlilik politikası, RoomFit uygulamasının ("Hizmet") kullanımı sırasında kişisel verilerinizin nasıl toplandığını, kullanıldığını, saklandığını ve korunduğunu açıklamaktadır.</p>
-        <p>Uygulamamızı kullanarak bu gizlilik politikasını kabul etmiş sayılırsınız.</p>
+        <p><strong>RoomFit</strong>, yapay zekâ destekli oda tasarım ve yerleşim uygulamasıdır. Bu gizlilik politikası, uygulamamızı kullanırken kişisel verilerinizin nasıl işlendiğini, korunduğunu ve hangi haklara sahip olduğunuzu açıklamaktadır.</p>
+        <p>Uygulamamızı kullanarak bu gizlilik politikasını kabul etmiş olursunuz.</p>
 
         <h2>2. Topladığımız Veriler</h2>
 
         <h3>2.1 Hesap Bilgileri</h3>
-        <p>Uygulamayı kullanmak için hesap oluşturmanız gerekmektedir. Şu bilgileri topluyoruz:</p>
+        <p>Hesap oluştururken şu bilgileri topluyoruz:</p>
         <ul>
-            <li><strong>E-posta adresi</strong> (zorunlu)</li>
-            <li><strong>Ad-soyad</strong> (gönüllü)</li>
-            <li><strong>Profil fotoğrafı</strong> (gönüllü)</li>
-            <li><strong>Google hesap bilgileri</strong> (Google ile giriş kullanırsanız)</li>
+            <li><strong>E-posta adresi</strong> (zorunlu) - hesap doğrulama ve iletişim için</li>
+            <li><strong>Ad-soyad</strong> (isteğe bağlı) - profil kişiselleştirme için</li>
+            <li><strong>Profil fotoğrafı</strong> (isteğe bağlı) - profil kişiselleştirme için</li>
+            <li><strong>Google hesap bilgileri</strong> - Google ile giriş yaptığınızda</li>
         </ul>
 
-        <h3>2.2 Oda ve Mobilya Verileri</h3>
-        <p>Uygulamanın ana işlevi için şu verileri topluyoruz:</p>
+        <h3>2.2 Oda ve Tasarım Verileri</h3>
+        <p>Uygulamanın temel işlevleri için şu verileri topluyoruz:</p>
         <ul>
-            <li><strong>Oda ölçüleri</strong> (en, boy, tavan yüksekliği)</li>
-            <li><strong>Sabit elemanlar</strong> (kapı, pencere, petek, klima, kolon konumları)</li>
-            <li><strong>Mobilya bilgileri</strong> (tip, ölçüler, isimler)</li>
-            <li><strong>Oda fotoğrafları</strong> (opsiyonel)</li>
-            <li><strong>Mobilya fotoğrafları</strong> (opsiyonel)</li>
-            <li><strong>Tasarım kayıtları</strong> (önerileri kaydettiğinizde)</li>
+            <li><strong>Oda ölçüleri</strong> - genişlik, uzunluk, tavan yüksekliği</li>
+            <li><strong>Sabit elemanlar</strong> - kapı, pencere, petek, klima, kolon konumları</li>
+            <li><strong>Mobilya bilgileri</strong> - tip, ölçüler, isimler</li>
+            <li><strong>Oda fotoğrafları</strong> (isteğe bağlı) - AI önerileri için</li>
+            <li><strong>Mobilya fotoğrafları</strong> (isteğe bağlı) - AI önerileri için</li>
+            <li><strong>Kaydedilen tasarımlar</strong> - önerileri kaydettiğinizde</li>
         </ul>
 
-        <h3>2.3 Kullanım Verileri</h3>
+        <h3>2.3 Teknik Veriler</h3>
         <ul>
-            <li><strong>Uygulama kullanım istatistikleri</strong> (Firebase Crashlytics)</li>
-            <li><strong>Cihaz bilgileri</strong> (model, işletim sistemi sürümü)</li>
-            <li><strong>Hata raporları</strong></li>
-            <li><strong>Performans verileri</strong></li>
+            <li><strong>Cihaz bilgileri</strong> - model, işletim sistemi sürümü</li>
+            <li><strong>Kullanım istatistikleri</strong> - uygulama performansını iyileştirmek için</li>
+            <li><strong>Hata raporları</strong> - sorunları tespit etmek ve düzeltmek için</li>
         </ul>
 
-        <h3>2.4 Konum Verileri</h3>
-        <p>❌ <strong>Toplamıyoruz.</strong> Uygulama konum bilgisi talep etmez ve kullanmaz.</p>
+        <div class="warning-box">
+            <h3>⚠️ Toplamadığımız Veriler</h3>
+            <p>Aşağıdaki verileri <strong>toplamıyoruz</strong>:</p>
+            <ul>
+                <li>Konum bilgileri</li>
+                <li>Reklam tanımlayıcıları</li>
+                <li>Kişisel finansal veriler</li>
+                <li>Sosyal medya hesap bilgileri (Google girişi hariç)</li>
+            </ul>
+        </div>
 
         <h2>3. Verileri Nasıl Kullanıyoruz?</h2>
         <ul>
             <li>Hesabınızı oluşturmak ve yönetmek</li>
             <li>Yapay zekâ destekli oda düzeni önerileri sunmak</li>
             <li>Tasarımlarınızı kaydetmek ve senkronize etmek</li>
-            <li>Uygulama performansını iyileştirmek</li>
+            <li>Uygulama performansını artırmak</li>
             <li>Hataları tespit etmek ve düzeltmek</li>
             <li>Sizinle iletişim kurmak (destek, güncellemeler)</li>
         </ul>
@@ -114,69 +242,109 @@
         <h2>4. Veri Paylaşımı</h2>
 
         <h3>4.1 Yapay Zekâ Hizmetleri</h3>
-        <p>Oda ve mobilya fotoğraflarınız, yapay zekâ önerileri için <strong>Anthropic (Claude API)</strong>'e işlenmek üzere gönderilir. Bu fotoğraflar yalnızca öneri üretimi için kullanılır ve Anthropic tarafından saklanmaz.</p>
+        <div class="highlight-box">
+            <p>Oda ve mobilya fotoğraflarınız, yapay zekâ önerileri için <strong>üçüncü taraf AI API'si</strong> aracılığıyla işlenir. Bu fotoğraflar yalnızca öneri üretimi için kullanılır ve API sağlayıcısı tarafından kalıcı olarak saklanmaz.</p>
+            <p><strong>Not:</strong> Kullanılan AI API sağlayıcısı değişebilir. Güncel bilgiler için bu sayfayı takip edin.</p>
+        </div>
 
-        <h3>4.2 Üçüncü Taraf Hizmetler</h3>
+        <h3>4.2 Hizmet Sağlayıcılar</h3>
         <ul>
-            <li><strong>Firebase Authentication:</strong> Hesap doğrulama</li>
-            <li><strong>Firebase Crashlytics:</strong> Hata takibi</li>
-            <li><strong>Google Cloud:</strong> Veri depolama ve backend</li>
+            <li><strong>Firebase Authentication:</strong> Hesap doğrulama ve güvenlik</li>
+            <li><strong>Firebase Crashlytics:</strong> Hata takibi ve uygulama kararlılığı</li>
+            <li><strong>Google Cloud:</strong> Veri depolama ve backend hizmetleri</li>
         </ul>
 
-        <h3>4.3 Paylaşmıyoruz</h3>
-        <p>❌ Verilerinizi reklamcılarla, pazar araştırmacılarıyla veya diğer üçüncü taraflarla paylaşmıyoruz.</p>
+        <h3>4.3 Paylaşmadığımız Veriler</h3>
+        <p>❌ Verilerinizi <strong>şu taraflarla paylaşmıyoruz</strong>:</p>
+        <ul>
+            <li>Reklamcılar</li>
+            <li>Veri brokerları</li>
+            <li>Pazar araştırma şirketleri</li>
+            <li>Diğer üçüncü taraflar (yasal zorunluluklar hariç)</li>
+        </ul>
 
         <h2>5. Veri Saklama ve Silme</h2>
         <ul>
             <li><strong>Saklama süresi:</strong> Hesabınız aktif olduğu sürece</li>
-            <li><strong>Silme hakkı:</strong> Uygulama içinden "Hesabımı Sil" özelliğiyle tüm verilerinizi silebilirsiniz</li>
-            <li><strong>Otomatik silme:</strong> 2 yıl aktif olmayan hesaplar otomatik silinir</li>
+            <li><strong>Silme hakkı:</strong> Uygulama içinden "Hesabımı Sil" özelliğiyle veya <a href="delete-account.html">bu sayfadan</a> tüm verilerinizi silebilirsiniz</li>
+            <li><strong>Otomatik silme:</strong> 2 yıl aktif olmayan hesaplar otomatik olarak silinir</li>
         </ul>
 
         <div class="contact-box">
             <h3>Hesap Silme</h3>
-            <p>Uygulama içinde: Profil → Hesabım → Hesabımı Sil</p>
+            <p><strong>Uygulama içinden:</strong> Profil → Hesabım → Hesabımı Sil</p>
+            <p><strong>Web üzerinden:</strong> <a href="delete-account.html">delete-account.html</a></p>
+            <p><strong>E-posta ile:</strong> <a href="mailto:suleymanciceek1@gmail.com">suleymanciceek1@gmail.com</a></p>
         </div>
 
         <h2>6. Veri Güvenliği</h2>
+        <p>Verilerinizin güvenliği için şu önlemleri alıyoruz:</p>
         <ul>
-            <li>HTTPS ile şifreli iletişim</li>
-            <li>Firebase güvenlik kuralları</li>
-            <li>Düzenli güvenlik taramaları</li>
-            <li>Sınırlı erişim kontrolü</li>
+            <li>HTTPS/TLS ile şifreli veri iletişimi</li>
+            <li>Firebase güvenlik kuralları ve erişim kontrolleri</li>
+            <li>Düzenli güvenlik taramaları ve güncellemeler</li>
+            <li>Sınırlı personel erişimi</li>
         </ul>
 
         <h2>7. Çocukların Gizliliği</h2>
-        <p>Uygulama 13 yaş altı çocuklara yönelik değildir. 13 yaş altı çocuklardan bilerek veri toplamıyoruz.</p>
+        <p>Uygulama genel kullanıcı kitlesi için tasarlanmıştır. 16 yaş altı kullanıcılar için ebeveyn gözetimi önerilir. Ebeveynler veya vasiler, çocuklarının uygulama kullanımını denetlemelidir.</p>
+        <p>16 yaş altı bir çocuğun verilerinin işlendiğini tespit edersek, bu verileri derhal sileceğiz.</p>
 
-        <h2>8. KVKK Haklarınız</h2>
-        <p>Türkiye Cumhuriyeti Anayasası ve KVKK kapsamında şu haklarınız bulunmaktadır:</p>
+        <h2>8. KVKK Haklarınız (Türkiye)</h2>
+        <p>6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında şu haklarınız bulunmaktadır:</p>
         <ul>
-            <li>Verilerinize erişim hakkı</li>
-            <li>Düzeltme ve güncelleme hakkı</li>
-            <li>Silme ve yok etme hakkı</li>
-            <li>İşlenmeye itiraz etme hakkı</li>
+            <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
+            <li>İşlenmişse buna ilişkin bilgi talep etme</li>
+            <li>İşlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme</li>
+            <li>Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme</li>
+            <li>Eksik veya yanlış işlenmiş ise düzeltilmesini isteme</li>
+            <li>KVKK'nın 7. maddesinde öngörülen şartlar çerçevesinde silinmesini veya yok edilmesini isteme</li>
+            <li>İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi sebebiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme</li>
+            <li>Kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız halinde zararın giderilmesini talep etme</li>
         </ul>
 
         <div class="contact-box">
-            <h3>İletişim</h3>
-            <p><strong>KVKK Başvuru Sahibi:</strong> Süleyman Çiçek</p>
+            <h3>KVKK Veri Sorumlusu</h3>
+            <p><strong>Ad Soyad:</strong> Süleyman Çiçek</p>
             <p><strong>E-posta:</strong> <a href="mailto:suleymanciceek1@gmail.com">suleymanciceek1@gmail.com</a></p>
             <p><strong>Adres:</strong> İstanbul, Türkiye</p>
-            <p><strong>Tema Dilimi:</strong> Uygulama abonelikleri yönetimi</p>
+            <p><strong>Veri İşleme Amacı:</strong> Uygulama hizmetlerinin sunulması ve abonelik yönetimi</p>
         </div>
 
-        <h2>9. Değişiklikler</h2>
-        <p>Bu gizlilik politikası güncellenebilir. Değişiklikler bu sayfada yayınlanır.</p>
+        <h2>9. GDPR Haklarınız (AB Vatandaşları)</h2>
+        <p>Avrupa Birliği vatandaşları olarak Genel Veri Koruma Tüzüğü (GDPR) kapsamında şu haklara sahipsiniz:</p>
+        <ul>
+            <li>Verilerinize erişim hakkı</li>
+            <li>Düzeltme hakkı</li>
+            <li>Silme hakkı ("unutulma hakkı")</li>
+            <li>İşlemeyi kısıtlama hakkı</li>
+            <li>Veri taşınabilirliği hakkı</li>
+            <li>İtmaz hakkı</li>
+            <li>Otomatik karar almaya itiraz hakkı</li>
+        </ul>
 
-        <h2>10. İletişim</h2>
-        <p>Sorularınız için: <a href="mailto:suleymanciceek1@gmail.com">suleymanciceek1@gmail.com</a></p>
+        <h2>10. Çerezler ve Takip Teknolojileri</h2>
+        <p>Uygulamamız çerez kullanmamaktadır. Firebase Analytics ve Crashlytics, uygulama içi kullanım verilerini anonim olarak toplayabilir.</p>
+
+        <h2>11. Üçüncü Taraf Bağlantılar</h2>
+        <p>Uygulama, üçüncü taraf web sitelerine veya hizmetlerine bağlantılar içerebilir. Bu sitelerin gizlilik politikalarından sorumlu değiliz.</p>
+
+        <h2>12. Değişiklikler</h2>
+        <p>Bu gizlilik politikası zaman zaman güncellenebilir. Önemli değişiklikler durumunda uygulama içi bildirim gönderilir. Değişiklikleri takip etmek için bu sayfayı düzenli olarak ziyaret etmenizi öneririz.</p>
+
+        <h2>13. İletişim</h2>
+        <p>Gizlilik politikamız veya verilerinizin işlenmesi hakkında sorularınız için bizimle iletişime geçebilirsiniz:</p>
+
+        <div class="contact-box">
+            <p><strong>E-posta:</strong> <a href="mailto:suleymanciceek1@gmail.com">suleymanciceek1@gmail.com</a></p>
+            <p><strong>Yanıt süresi:</strong> 30 gün içinde</p>
+        </div>
 
         <hr>
 
         <div class="footer">
             <p>© 2026 RoomFit - Tüm hakları saklıdır.</p>
-            <p>Bu gizlilik politikası 17 Kasım 2026 tarihinde güncellenmiştir.</p>
+            <p>Bu gizlilik politikası 19 Kasım 2026 tarihinde güncellenmiştir.</p>
         </div>
     </div>
 </body>

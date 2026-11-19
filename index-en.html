@@ -7,50 +7,165 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #1e293b;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 20px;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
             background: white;
-            min-height: 100vh;
-        }
-        h1 { color: #1e3a8a; margin-bottom: 10px; }
-        h2 { color: #1e40af; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid #dbeafe; padding-bottom: 5px; }
-        h3 { color: #3b82f6; margin-top: 20px; margin-bottom: 10px; }
-        p { margin-bottom: 15px; }
-        ul { margin-left: 25px; margin-bottom: 15px; }
-        li { margin-bottom: 5px; }
-        .last-updated { color: #6b7280; font-size: 14px; margin-bottom: 30px; }
-        .contact-box {
-            background: #eff6ff;
-            border-left: 4px solid #3b82f6;
-            padding: 15px;
-            margin: 20px 0;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         .lang-switch {
-            text-align: right;
-            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: flex-end;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
         }
         .lang-switch a {
+            padding: 6px 12px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #475569;
+            transition: all 0.2s;
+        }
+        .lang-switch a:hover {
+            background: #3b82f6;
+            color: white;
+        }
+        .lang-switch a.active {
+            background: #1e3a8a;
+            color: white;
+        }
+        h1 {
+            color: #1e3a8a;
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .last-updated {
+            color: #64748b;
+            font-size: 15px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        h2 {
+            color: #1e40af;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #dbeafe;
+        }
+        h3 {
+            color: #3b82f6;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #334155;
+        }
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            color: #475569;
+            line-height: 1.7;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 5px solid #3b82f6;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        .highlight-box h3 {
+            color: #1e3a8a;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+        .highlight-box p {
+            margin-bottom: 0;
+            color: #1e40af;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        .warning-box h3 {
+            color: #92400e;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+        .warning-box p, .warning-box li {
+            color: #78350f;
+        }
+        .contact-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 5px solid #22c55e;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        .contact-box h3 {
+            color: #166534;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .contact-box p {
+            margin-bottom: 8px;
+            color: #15803d;
+        }
+        strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        a {
             color: #3b82f6;
             text-decoration: none;
-            margin-left: 15px;
+            font-weight: 500;
         }
-        .lang-switch a:hover { text-decoration: underline; }
-        strong { color: #1e3a8a; }
-        hr { border: none; border-top: 1px solid #e5e7eb; margin: 30px 0; }
+        a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #e2e8f0;
+            margin: 50px 0;
+        }
         .footer {
             text-align: center;
-            color: #6b7280;
-            font-size: 14px;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #e5e7eb;
+            color: #64748b;
+            font-size: 15px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            h1 { font-size: 28px; }
+            h2 { font-size: 20px; }
+            .lang-switch { justify-content: center; }
         }
     </style>
 </head>
@@ -58,55 +173,68 @@
     <div class="container">
         <div class="lang-switch">
             <a href="index.html">🇹🇷 Türkçe</a>
-            <a href="index-en.html">🇬🇧 English</a>
+            <a href="index-en.html" class="active">🇬🇧 English</a>
+            <a href="index-de.html">🇩🇪 Deutsch</a>
+            <a href="index-es.html">🇪🇸 Español</a>
+            <a href="index-fr.html">🇫🇷 Français</a>
+            <a href="index-ru.html">🇷🇺 Русский</a>
+            <a href="index-zh.html">🇨🇳 中文</a>
+            <a href="index-ar.html">🇸🇦 العربية</a>
         </div>
 
         <h1>RoomFit Privacy Policy</h1>
-        <p class="last-updated"><strong>Last updated:</strong> November 17, 2026</p>
+        <p class="last-updated"><strong>Last updated:</strong> November 19, 2026</p>
 
         <h2>1. Introduction</h2>
-        <p><strong>RoomFit</strong> ("we", "the app") is an AI-powered room layout application. This privacy policy explains how your personal data is collected, used, stored, and protected when you use the RoomFit application ("Service").</p>
+        <p><strong>RoomFit</strong> is an AI-powered room design and layout application. This privacy policy explains how your personal data is collected, processed, and protected when you use our application.</p>
         <p>By using our app, you agree to this privacy policy.</p>
 
         <h2>2. Data We Collect</h2>
 
         <h3>2.1 Account Information</h3>
-        <p>To use the app, you need to create an account. We collect:</p>
+        <p>When you create an account, we collect:</p>
         <ul>
-            <li><strong>Email address</strong> (required)</li>
-            <li><strong>Name</strong> (optional)</li>
-            <li><strong>Profile photo</strong> (optional)</li>
-            <li><strong>Google account information</strong> (if you sign in with Google)</li>
+            <li><strong>Email address</strong> (required) - for account verification and communication</li>
+            <li><strong>Name</strong> (optional) - for profile personalization</li>
+            <li><strong>Profile photo</strong> (optional) - for profile personalization</li>
+            <li><strong>Google account information</strong> - when you sign in with Google</li>
         </ul>
 
-        <h3>2.2 Room and Furniture Data</h3>
+        <h3>2.2 Room and Design Data</h3>
         <p>For the app's core functionality, we collect:</p>
         <ul>
-            <li><strong>Room measurements</strong> (width, length, ceiling height)</li>
-            <li><strong>Fixed elements</strong> (doors, windows, radiators, AC units, columns)</li>
-            <li><strong>Furniture details</strong> (type, dimensions, names)</li>
-            <li><strong>Room photos</strong> (optional)</li>
-            <li><strong>Furniture photos</strong> (optional)</li>
-            <li><strong>Saved designs</strong> (when you save AI suggestions)</li>
+            <li><strong>Room measurements</strong> - width, length, ceiling height</li>
+            <li><strong>Fixed elements</strong> - doors, windows, radiators, AC units, columns</li>
+            <li><strong>Furniture details</strong> - type, dimensions, names</li>
+            <li><strong>Room photos</strong> (optional) - for AI suggestions</li>
+            <li><strong>Furniture photos</strong> (optional) - for AI suggestions</li>
+            <li><strong>Saved designs</strong> - when you save AI recommendations</li>
         </ul>
 
-        <h3>2.3 Usage Data</h3>
+        <h3>2.3 Technical Data</h3>
         <ul>
-            <li><strong>App usage statistics</strong> (Firebase Crashlytics)</li>
-            <li><strong>Device information</strong> (model, OS version)</li>
-            <li><strong>Error reports</strong></li>
-            <li><strong>Performance data</strong></li>
+            <li><strong>Device information</strong> - model, OS version</li>
+            <li><strong>Usage statistics</strong> - to improve app performance</li>
+            <li><strong>Error reports</strong> - to detect and fix issues</li>
         </ul>
 
-        <h3>2.4 Location Data</h3>
-        <p>❌ <strong>We do NOT collect location data.</strong> The app does not request or use location information.</p>
+        <div class="warning-box">
+            <h3>⚠️ Data We Do NOT Collect</h3>
+            <p>We do <strong>NOT</strong> collect:</p>
+            <ul>
+                <li>Location data</li>
+                <li>Advertising identifiers</li>
+                <li>Personal financial information</li>
+                <li>Social media account data (except Google sign-in)</li>
+            </ul>
+        </div>
 
         <h2>3. How We Use Your Data</h2>
         <ul>
             <li>Create and manage your account</li>
             <li>Provide AI-powered room layout suggestions</li>
-            <li>Save and sync your designs</li>
-            <li>Improve app performance</li>
+            <li>Save and synchronize your designs</li>
+            <li>Improve application performance</li>
             <li>Detect and fix issues</li>
             <li>Communicate with you (support, updates)</li>
         </ul>
@@ -114,69 +242,96 @@
         <h2>4. Data Sharing</h2>
 
         <h3>4.1 AI Services</h3>
-        <p>Your room and furniture photos are sent to <strong>Anthropic (Claude API)</strong> for processing to generate AI suggestions. These photos are used solely for suggestion generation and are not stored by Anthropic.</p>
+        <div class="highlight-box">
+            <p>Your room and furniture photos are processed through a <strong>third-party AI API</strong> to generate design suggestions. These photos are used solely for suggestion generation and are not permanently stored by the API provider.</p>
+            <p><strong>Note:</strong> The AI API provider may change. Check this page for updates.</p>
+        </div>
 
-        <h3>4.2 Third-Party Services</h3>
+        <h3>4.2 Service Providers</h3>
         <ul>
-            <li><strong>Firebase Authentication:</strong> Account verification</li>
-            <li><strong>Firebase Crashlytics:</strong> Error tracking</li>
-            <li><strong>Google Cloud:</strong> Data storage and backend</li>
+            <li><strong>Firebase Authentication:</strong> Account verification and security</li>
+            <li><strong>Firebase Crashlytics:</strong> Error tracking and app stability</li>
+            <li><strong>Google Cloud:</strong> Data storage and backend services</li>
         </ul>
 
-        <h3>4.3 We Do NOT Share</h3>
-        <p>❌ We do not share your data with advertisers, market researchers, or other third parties.</p>
+        <h3>4.3 Data We Do NOT Share</h3>
+        <p>❌ We do <strong>NOT</strong> share your data with:</p>
+        <ul>
+            <li>Advertisers</li>
+            <li>Data brokers</li>
+            <li>Market research companies</li>
+            <li>Other third parties (except as required by law)</li>
+        </ul>
 
         <h2>5. Data Retention and Deletion</h2>
         <ul>
             <li><strong>Retention period:</strong> While your account is active</li>
-            <li><strong>Deletion right:</strong> You can delete all your data via the "Delete Account" feature in the app</li>
-            <li><strong>Automatic deletion:</strong> Inactive accounts are automatically deleted after 2 years</li>
+            <li><strong>Deletion right:</strong> Delete all your data via the in-app "Delete Account" feature or <a href="delete-account.html">this page</a></li>
+            <li><strong>Automatic deletion:</strong> Inactive accounts are deleted after 2 years</li>
         </ul>
 
         <div class="contact-box">
             <h3>Account Deletion</h3>
-            <p>In the app: Profile → My Account → Delete Account</p>
+            <p><strong>In the app:</strong> Profile → My Account → Delete Account</p>
+            <p><strong>Web:</strong> <a href="delete-account.html">delete-account.html</a></p>
+            <p><strong>Email:</strong> <a href="mailto:suleymanciceek1@gmail.com">suleymanciceek1@gmail.com</a></p>
         </div>
 
         <h2>6. Data Security</h2>
+        <p>We take the following measures to protect your data:</p>
         <ul>
-            <li>HTTPS encrypted communication</li>
-            <li>Firebase security rules</li>
-            <li>Regular security scans</li>
-            <li>Limited access control</li>
+            <li>HTTPS/TLS encrypted data transmission</li>
+            <li>Firebase security rules and access controls</li>
+            <li>Regular security scans and updates</li>
+            <li>Limited personnel access</li>
         </ul>
 
         <h2>7. Children's Privacy</h2>
-        <p>The app is not intended for children under 13. We do not knowingly collect data from children under 13.</p>
+        <p>The app is designed for a general audience. Parental supervision is recommended for users under 16. Parents or guardians should supervise their children's use of the app.</p>
+        <p>If we discover that a child under 16 has had their data processed, we will delete it immediately.</p>
 
-        <h2>8. Your Rights (GDPR/KVKK)</h2>
-        <p>You have the following rights:</p>
+        <h2>8. Your Rights Under GDPR (EU Citizens)</h2>
+        <p>Under the General Data Protection Regulation (GDPR), you have the following rights:</p>
         <ul>
-            <li>Right to access your data</li>
-            <li>Right to rectification and update</li>
-            <li>Right to erasure and deletion</li>
-            <li>Right to object to processing</li>
+            <li>Right of access to your data</li>
+            <li>Right to rectification</li>
+            <li>Right to erasure ("right to be forgotten")</li>
+            <li>Right to restrict processing</li>
+            <li>Right to data portability</li>
+            <li>Right to object</li>
+            <li>Right to object to automated decision-making</li>
         </ul>
 
         <div class="contact-box">
-            <h3>Contact</h3>
-            <p><strong>Data Controller:</strong> Süleyman Çiçek</p>
+            <h3>Data Controller</h3>
+            <p><strong>Name:</strong> Süleyman Çiçek</p>
             <p><strong>Email:</strong> <a href="mailto:suleymanciceek1@gmail.com">suleymanciceek1@gmail.com</a></p>
             <p><strong>Address:</strong> Istanbul, Turkey</p>
-            <p><strong>Purpose:</strong> Application subscription management</p>
+            <p><strong>Purpose of Processing:</strong> Providing application services and subscription management</p>
         </div>
 
-        <h2>9. Changes</h2>
-        <p>This privacy policy may be updated. Changes will be published on this page.</p>
+        <h2>9. Cookies and Tracking Technologies</h2>
+        <p>Our application does not use cookies. Firebase Analytics and Crashlytics may collect anonymous in-app usage data.</p>
 
-        <h2>10. Contact</h2>
-        <p>Questions? Email us: <a href="mailto:suleymanciceek1@gmail.com">suleymanciceek1@gmail.com</a></p>
+        <h2>10. Third-Party Links</h2>
+        <p>The app may contain links to third-party websites or services. We are not responsible for the privacy policies of those sites.</p>
+
+        <h2>11. Changes to This Policy</h2>
+        <p>This privacy policy may be updated from time to time. We will notify you of significant changes via in-app notifications. We recommend checking this page regularly.</p>
+
+        <h2>12. Contact Us</h2>
+        <p>If you have questions about this privacy policy or how your data is processed, please contact us:</p>
+
+        <div class="contact-box">
+            <p><strong>Email:</strong> <a href="mailto:suleymanciceek1@gmail.com">suleymanciceek1@gmail.com</a></p>
+            <p><strong>Response time:</strong> Within 30 days</p>
+        </div>
 
         <hr>
 
         <div class="footer">
             <p>© 2026 RoomFit - All rights reserved.</p>
-            <p>This privacy policy was last updated on November 17, 2026.</p>
+            <p>This privacy policy was last updated on November 19, 2026.</p>
         </div>
     </div>
 </body>
