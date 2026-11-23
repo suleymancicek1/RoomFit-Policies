@@ -7,24 +7,24 @@ This repository contains the privacy policy and account deletion pages for the R
 ## 🌍 Desteklenen Diller / Supported Languages
 
 ### Gizlilik Politikası / Privacy Policy
-- 🇹🇷 [Türkçe](https://suleymanciceek1.github.io/RoomFit-Policies/)
-- 🇬🇧 [English](https://suleymanciceek1.github.io/RoomFit-Policies/index-en.html)
-- 🇩🇪 [Deutsch](https://suleymanciceek1.github.io/RoomFit-Policies/index-de.html)
-- 🇪🇸 [Español](https://suleymanciceek1.github.io/RoomFit-Policies/index-es.html)
-- 🇫🇷 [Français](https://suleymanciceek1.github.io/RoomFit-Policies/index-fr.html)
-- 🇷🇺 [Русский](https://suleymanciceek1.github.io/RoomFit-Policies/index-ru.html)
-- 🇨🇳 [中文](https://suleymanciceek1.github.io/RoomFit-Policies/index-zh.html)
-- 🇸🇦 [العربية](https://suleymanciceek1.github.io/RoomFit-Policies/index-ar.html)
+- 🇹🇷 [Türkçe](https://suleymancicek1.github.io/RoomFit-Policies/)
+- 🇬🇧 [English](https://suleymancicek1.github.io/RoomFit-Policies/index-en.html)
+- 🇩🇪 [Deutsch](https://suleymancicek1.github.io/RoomFit-Policies/index-de.html)
+- 🇪🇸 [Español](https://suleymancicek1.github.io/RoomFit-Policies/index-es.html)
+- 🇫🇷 [Français](https://suleymancicek1.github.io/RoomFit-Policies/index-fr.html)
+- 🇷🇺 [Русский](https://suleymancicek1.github.io/RoomFit-Policies/index-ru.html)
+- 🇨🇳 [中文](https://suleymancicek1.github.io/RoomFit-Policies/index-zh.html)
+- 🇸🇦 [العربية](https://suleymancicek1.github.io/RoomFit-Policies/index-ar.html)
 
 ### Hesap Silme / Delete Account
-- 🇹🇷 [Türkçe](https://suleymanciceek1.github.io/RoomFit-Policies/delete-account.html)
-- 🇬🇧 [English](https://suleymanciceek1.github.io/RoomFit-Policies/delete-account-en.html)
-- 🇩🇪 [Deutsch](https://suleymanciceek1.github.io/RoomFit-Policies/delete-account-de.html)
-- 🇪🇸 [Español](https://suleymanciceek1.github.io/RoomFit-Policies/delete-account-es.html)
-- 🇫🇷 [Français](https://suleymanciceek1.github.io/RoomFit-Policies/delete-account-fr.html)
-- 🇷🇺 [Русский](https://suleymanciceek1.github.io/RoomFit-Policies/delete-account-ru.html)
-- 🇨🇳 [中文](https://suleymanciceek1.github.io/RoomFit-Policies/delete-account-zh.html)
-- 🇸🇦 [العربية](https://suleymanciceek1.github.io/RoomFit-Policies/delete-account-ar.html)
+- 🇹🇷 [Türkçe](https://suleymancicek1.github.io/RoomFit-Policies/delete-account.html)
+- 🇬🇧 [English](https://suleymancicek1.github.io/RoomFit-Policies/delete-account-en.html)
+- 🇩🇪 [Deutsch](https://suleymancicek1.github.io/RoomFit-Policies/delete-account-de.html)
+- 🇪🇸 [Español](https://suleymancicek1.github.io/RoomFit-Policies/delete-account-es.html)
+- 🇫🇷 [Français](https://suleymancicek1.github.io/RoomFit-Policies/delete-account-fr.html)
+- 🇷🇺 [Русский](https://suleymancicek1.github.io/RoomFit-Policies/delete-account-ru.html)
+- 🇨🇳 [中文](https://suleymancicek1.github.io/RoomFit-Policies/delete-account-zh.html)
+- 🇸🇦 [العربية](https://suleymancicek1.github.io/RoomFit-Policies/delete-account-ar.html)
 
 ## 📱 Uygulama / App
 
@@ -93,7 +93,7 @@ Bu politikalar düzenli olarak güncellenir. Son güncelleme tarihi her sayfada 
 
 These policies are updated regularly. The last update date is shown on each page.
 
-**Son Güncelleme / Last Updated:** November 19, 2026
+**Son Güncelleme / Last Updated:** November 23, 2026
 
 ## 📄 Lisans / License
 

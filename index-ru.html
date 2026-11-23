@@ -4,188 +4,287 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Политика конфиденциальности RoomFit</title>
+    <link rel="icon" href="icon.png" type="image/png">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1E3A8A;
+            --primary-hover: #1E40AF;
+            --accent: #FBBF24;
+            --accent-hover: #F59E0B;
+            --bg-dark: #0B1120;
+            --bg-card: #152139;
+            --bg-elevated: #1E293B;
+            --text-primary: #F8FAFC;
+            --text-secondary: #CBD5E1;
+            --text-muted: #64748B;
+            --border: #334155;
+            --radius: 12px;
+        }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.7;
-            color: #1e293b;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 20px;
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            min-height: 100vh;
         }
-        .container {
-            max-width: 900px;
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(21, 33, 57, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            max-width: 960px;
             margin: 0 auto;
-            background: white;
-            padding: 50px;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        .lang-switch {
+            padding: 16px 20px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: flex-end;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #e2e8f0;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
         }
-        .lang-switch a {
-            padding: 6px 12px;
-            background: #f1f5f9;
-            border-radius: 6px;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+        .brand-name {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--text-primary);
+        }
+        .lang-toggle { position: relative; }
+        .lang-toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 44px;
+            padding: 8px 14px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .lang-toggle-btn:hover, .lang-toggle-btn:focus-visible {
+            border-color: var(--primary);
+            color: var(--text-primary);
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        .lang-toggle-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            fill: none;
+        }
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 160px;
+            padding: 6px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+        }
+        .lang-toggle:focus-within .lang-dropdown,
+        .lang-toggle:hover .lang-dropdown {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .lang-option {
+            display: block;
+            padding: 10px 12px;
+            min-height: 44px;
+            border-radius: 8px;
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
-            color: #475569;
-            transition: all 0.2s;
-        }
-        .lang-switch a:hover {
-            background: #3b82f6;
-            color: white;
-        }
-        .lang-switch a.active {
-            background: #1e3a8a;
-            color: white;
-        }
-        h1 {
-            color: #1e3a8a;
-            font-size: 36px;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        .last-updated {
-            color: #64748b;
-            font-size: 15px;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-        h2 {
-            color: #1e40af;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: 600;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #dbeafe;
-        }
-        h3 {
-            color: #3b82f6;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-size: 18px;
-            font-weight: 600;
-        }
-        p {
-            margin-bottom: 16px;
-            font-size: 16px;
-            color: #334155;
-        }
-        ul {
-            margin-left: 30px;
-            margin-bottom: 20px;
-        }
-        li {
-            margin-bottom: 10px;
-            color: #475569;
-            line-height: 1.7;
-        }
-        .highlight-box {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            border-left: 5px solid #3b82f6;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 8px;
-        }
-        .highlight-box h3 {
-            color: #1e3a8a;
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-        .highlight-box p {
-            margin-bottom: 0;
-            color: #1e40af;
-        }
-        .warning-box {
-            background: #fef3c7;
-            border-left: 5px solid #f59e0b;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 8px;
-        }
-        .warning-box h3 {
-            color: #92400e;
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-        .warning-box p, .warning-box li {
-            color: #78350f;
-        }
-        .contact-box {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            border-left: 5px solid #22c55e;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 8px;
-        }
-        .contact-box h3 {
-            color: #166534;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-        .contact-box p {
-            margin-bottom: 8px;
-            color: #15803d;
-        }
-        strong {
-            color: #1e293b;
-            font-weight: 600;
-        }
-        a {
-            color: #3b82f6;
-            text-decoration: none;
             font-weight: 500;
+            transition: background 0.15s, color 0.15s;
         }
-        a:hover {
-            text-decoration: underline;
+        .lang-option:hover { background: var(--bg-elevated); color: var(--text-primary); }
+        .lang-option.active { background: var(--primary); color: var(--text-primary); }
+        .breadcrumb {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px 20px 0;
+            font-size: 14px;
+            color: var(--text-muted);
         }
-        hr {
-            border: none;
-            border-top: 2px solid #e2e8f0;
-            margin: 50px 0;
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.15s;
         }
-        .footer {
-            text-align: center;
-            color: #64748b;
-            font-size: 15px;
+        .breadcrumb a:hover { color: var(--accent); }
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px;
+            margin-top: 24px;
         }
         @media (max-width: 600px) {
-            .container {
-                padding: 25px;
-            }
-            h1 { font-size: 28px; }
-            h2 { font-size: 20px; }
-            .lang-switch { justify-content: center; }
+            .content-card { padding: 28px 20px; }
         }
+        .page-title {
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+        .last-updated {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+        p { color: var(--text-secondary); margin-bottom: 16px; font-size: 16px; }
+        ul, ol { margin-left: 24px; margin-bottom: 20px; color: var(--text-secondary); }
+        li { margin-bottom: 10px; }
+        strong { color: var(--text-primary); font-weight: 600; }
+        a { color: var(--accent); text-decoration: none; font-weight: 500; transition: color 0.15s; }
+        a:hover { color: var(--accent-hover); }
+        .highlight, .warning, .contact, .highlight-box, .warning-box, .contact-box, .steps {
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin: 28px 0;
+        }
+        .highlight, .highlight-box {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.15));
+            border-left: 4px solid var(--primary);
+        }
+        .warning, .warning-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.1));
+            border-left: 4px solid var(--accent);
+        }
+        .warning h3, .warning-box h3 { color: var(--accent); margin-top: 0; }
+        .contact, .contact-box {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(22, 163, 74, 0.08));
+            border-left: 4px solid #22C55E;
+        }
+        .contact h3, .contact-box h3 { color: #22C55E; margin-top: 0; }
+        .steps {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border);
+        }
+        .steps h2 { margin-top: 0; border-bottom: none; padding-bottom: 0; }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .btn-primary:hover { background: var(--primary-hover); color: #fff; }
+        hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+        .site-footer {
+            text-align: center;
+            padding: 32px 20px;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid var(--border);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="lang-switch">
-            <a href="index.html">🇹🇷 Türkçe</a>
-            <a href="index-en.html">🇬🇧 English</a>
-            <a href="index-de.html">🇩🇪 Deutsch</a>
-            <a href="index-es.html">🇪🇸 Español</a>
-            <a href="index-fr.html">🇫🇷 Français</a>
-            <a href="index-ru.html" class="active">🇷🇺 Русский</a>
-            <a href="index-zh.html">🇨🇳 中文</a>
-            <a href="index-ar.html">🇸🇦 العربية</a>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index-ru.html" class="brand">
+                <img src="icon.png" alt="" class="brand-icon">
+                <span class="brand-name">RoomFit</span>
+            </a>
+            <div class="lang-toggle">
+                <button type="button" class="lang-toggle-btn" aria-label="Сменить язык">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <span>RU</span>
+                </button>
+                <nav class="lang-dropdown" aria-label="Выбор языка">
+                    <a href="index.html" class="lang-option">🇹🇷 Türkçe</a>
+                    <a href="index-en.html" class="lang-option">🇬🇧 English</a>
+                    <a href="index-de.html" class="lang-option">🇩🇪 Deutsch</a>
+                    <a href="index-es.html" class="lang-option">🇪🇸 Español</a>
+                    <a href="index-fr.html" class="lang-option">🇫🇷 Français</a>
+                    <a href="index-ru.html" class="lang-option active">🇷🇺 Русский</a>
+                    <a href="index-zh.html" class="lang-option">🇨🇳 中文</a>
+                    <a href="index-ar.html" class="lang-option">🇸🇦 العربية</a>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <h1>Политика конфиденциальности RoomFit</h1>
-        <p class="last-updated"><strong>Последнее обновление:</strong> 19 ноября 2026</p>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index-ru.html">Главная</a> / <span>Политика конфиденциальности</span>
+    </nav>
 
-        <h2>1. Введение</h2>
+    <main>
+        <article class="content-card">
+            <h1 class="page-title">Политика конфиденциальности RoomFit</h1>
+            <p class="last-updated"><strong>Последнее обновление:</strong> 23 ноября 2026</p>
+
+            <h2>1. Введение</h2>
         <p><strong>RoomFit</strong> — это приложение для проектирования и планирования комнат с использованием искусственного интеллекта. Эта политика конфиденциальности объясняет, как ваши персональные данные собираются, обрабатываются и защищаются при использовании нашего приложения.</p>
         <p>Используя наше приложение, вы соглашаетесь с данной политикой конфиденциальности.</p>
 
@@ -326,13 +425,11 @@
             <p><strong>E-mail:</strong> <a href="mailto:suleymanciceek1@gmail.com">suleymanciceek1@gmail.com</a></p>
             <p><strong>Время ответа:</strong> В течение 30 дней</p>
         </div>
+        </article>
+    </main>
 
-        <hr>
-
-        <div class="footer">
-            <p>© 2026 RoomFit - Все права защищены.</p>
-            <p>Эта политика конфиденциальности была обновлена 19 ноября 2026.</p>
-        </div>
-    </div>
+    <footer class="site-footer">
+        <p>© 2026 RoomFit – Все права защищены.</p>
+    </footer>
 </body>
 </html>

@@ -4,159 +4,287 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حذف الحساب - RoomFit</title>
-    <meta name="description" content="استخدم هذه الصفحة لحذف حسابك في تطبيق RoomFit.">
+    <link rel="icon" href="icon.png" type="image/png">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1E3A8A;
+            --primary-hover: #1E40AF;
+            --accent: #FBBF24;
+            --accent-hover: #F59E0B;
+            --bg-dark: #0B1120;
+            --bg-card: #152139;
+            --bg-elevated: #1E293B;
+            --text-primary: #F8FAFC;
+            --text-secondary: #CBD5E1;
+            --text-muted: #64748B;
+            --border: #334155;
+            --radius: 12px;
+        }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-dark);
             min-height: 100vh;
+        }
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(21, 33, 57, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 16px 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
+            justify-content: space-between;
+            gap: 20px;
         }
-        .container {
-            max-width: 650px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            color: #1e293b;
-            border-radius: 20px;
-            padding: 50px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
         }
-        .logo {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 30px;
-        }
-        h1 {
-            color: #1e3a8a;
-            margin-bottom: 25px;
-            font-size: 36px;
-            font-weight: 700;
-        }
-        p {
-            line-height: 1.8;
-            margin-bottom: 20px;
-            font-size: 17px;
-            color: #475569;
-        }
-        .warning-box {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border-right: 5px solid #f59e0b;
-            padding: 20px;
-            margin: 30px 0;
+        .brand-icon {
+            width: 32px;
+            height: 32px;
             border-radius: 8px;
+            object-fit: contain;
         }
-        .warning-box h3 {
-            color: #92400e;
-            margin-bottom: 12px;
+        .brand-name {
             font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--text-primary);
         }
-        .warning-box p, .warning-box li {
-            color: #78350f;
-            margin-bottom: 8px;
+        .lang-toggle { position: relative; }
+        .lang-toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 44px;
+            padding: 8px 14px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
         }
-        .steps {
-            background: #f8fafc;
-            padding: 30px;
-            border-radius: 12px;
-            margin: 30px 0;
-            border: 2px solid #e2e8f0;
+        .lang-toggle-btn:hover, .lang-toggle-btn:focus-visible {
+            border-color: var(--primary);
+            color: var(--text-primary);
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
         }
-        .steps h2 {
-            color: #1e3a8a;
-            margin-bottom: 20px;
-            font-size: 22px;
+        .lang-toggle-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            fill: none;
         }
-        .steps ol {
-            padding-right: 25px;
-            padding-left: 0;
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 160px;
+            padding: 6px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
         }
-        .steps li {
-            margin-bottom: 15px;
-            line-height: 1.7;
-            color: #475569;
+        .lang-toggle:focus-within .lang-dropdown,
+        .lang-toggle:hover .lang-dropdown {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
         }
-        .steps li strong {
-            color: #1e293b;
-        }
-        .btn-primary {
-            display: inline-block;
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-            color: #fff;
-            padding: 18px 40px;
-            border-radius: 12px;
+        .lang-option {
+            display: block;
+            padding: 10px 12px;
+            min-height: 44px;
+            border-radius: 8px;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 600;
-            margin-top: 30px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.15s, color 0.15s;
         }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.4);
+        .lang-option:hover { background: var(--bg-elevated); color: var(--text-primary); }
+        .lang-option.active { background: var(--primary); color: var(--text-primary); }
+        .breadcrumb {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px 20px 0;
+            font-size: 14px;
+            color: var(--text-muted);
         }
-        .contact {
-            margin-top: 35px;
-            padding-top: 25px;
-            border-top: 2px solid #e2e8f0;
-        }
-        .contact p {
-            margin-bottom: 10px;
-            font-size: 15px;
-        }
-        .contact a {
-            color: #1e3a8a;
+        .breadcrumb a {
+            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 600;
+            transition: color 0.15s;
         }
-        .contact a:hover {
-            text-decoration: underline;
+        .breadcrumb a:hover { color: var(--accent); }
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
         }
-        .lang-switch {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #e2e8f0;
-        }
-        .lang-switch a {
-            color: #64748b;
-            text-decoration: none;
-            margin: 0 8px;
-            font-size: 13px;
-        }
-        .lang-switch a:hover {
-            color: #1e3a8a;
-        }
-        ul {
-            margin-right: 20px;
-            margin-left: 0;
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px;
+            margin-top: 24px;
         }
         @media (max-width: 600px) {
-            .container {
-                padding: 30px;
-            }
-            h1 { font-size: 28px; }
-            body { padding: 15px; }
+            .content-card { padding: 28px 20px; }
         }
+        .page-title {
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+        .last-updated {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+        p { color: var(--text-secondary); margin-bottom: 16px; font-size: 16px; }
+        ul, ol { margin-left: 24px; margin-bottom: 20px; color: var(--text-secondary); }
+        li { margin-bottom: 10px; }
+        strong { color: var(--text-primary); font-weight: 600; }
+        a { color: var(--accent); text-decoration: none; font-weight: 500; transition: color 0.15s; }
+        a:hover { color: var(--accent-hover); }
+        .highlight, .warning, .contact, .highlight-box, .warning-box, .contact-box, .steps {
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin: 28px 0;
+        }
+        .highlight, .highlight-box {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.15));
+            border-left: 4px solid var(--primary);
+        }
+        .warning, .warning-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.1));
+            border-left: 4px solid var(--accent);
+        }
+        .warning h3, .warning-box h3 { color: var(--accent); margin-top: 0; }
+        .contact, .contact-box {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(22, 163, 74, 0.08));
+            border-left: 4px solid #22C55E;
+        }
+        .contact h3, .contact-box h3 { color: #22C55E; margin-top: 0; }
+        .steps {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border);
+        }
+        .steps h2 { margin-top: 0; border-bottom: none; padding-bottom: 0; }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .btn-primary:hover { background: var(--primary-hover); color: #fff; }
+        hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+        .site-footer {
+            text-align: center;
+            padding: 32px 20px;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid var(--border);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <svg viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="70" height="70" rx="14" fill="#1e3a8a"/>
-                <path d="M35 14L49 28H42V42H28V28H21L35 14Z" fill="white"/>
-                <path d="M21 49H49V42H21V49Z" fill="white"/>
-            </svg>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index-ar.html" class="brand">
+                <img src="icon.png" alt="" class="brand-icon">
+                <span class="brand-name">RoomFit</span>
+            </a>
+            <div class="lang-toggle">
+                <button type="button" class="lang-toggle-btn" aria-label="تغيير اللغة">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <span>AR</span>
+                </button>
+                <nav class="lang-dropdown" aria-label="اختيار اللغة">
+                    <a href="delete-account.html" class="lang-option">🇹🇷 Türkçe</a>
+                    <a href="delete-account-en.html" class="lang-option">🇬🇧 English</a>
+                    <a href="delete-account-de.html" class="lang-option">🇩🇪 Deutsch</a>
+                    <a href="delete-account-es.html" class="lang-option">🇪🇸 Español</a>
+                    <a href="delete-account-fr.html" class="lang-option">🇫🇷 Français</a>
+                    <a href="delete-account-ru.html" class="lang-option">🇷🇺 Русский</a>
+                    <a href="delete-account-zh.html" class="lang-option">🇨🇳 中文</a>
+                    <a href="delete-account-ar.html" class="lang-option active">🇸🇦 العربية</a>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <h1>حذف الحساب</h1>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index-ar.html">الرئيسية</a> / <span>حذف الحساب</span>
+    </nav>
 
-        <p>
+    <main>
+        <article class="content-card">
+            <h1 class="page-title">حذف الحساب</h1>
+            <p class="last-updated"><strong>آخر تحديث:</strong> 23 نوفمبر 2026</p>
+
+            <p>
             يمكنك استخدام هذه الصفحة لحذف حسابك بالكامل في تطبيق RoomFit.
             عند حذف الحساب، ستتم إزالة جميع بياناتك بشكل دائم.
         </p>
@@ -206,17 +334,11 @@
                 <strong>مسؤول بيانات KVKK:</strong> سليمان جيجك، إسطنبول، تركيا
             </p>
         </div>
+        </article>
+    </main>
 
-        <div class="lang-switch">
-            <a href="delete-account.html">🇹🇷 Türkçe</a>
-            <a href="delete-account-en.html">🇬🇧 English</a>
-            <a href="delete-account-de.html">🇩🇪 Deutsch</a>
-            <a href="delete-account-es.html">🇪🇸 Español</a>
-            <a href="delete-account-fr.html">🇫🇷 Français</a>
-            <a href="delete-account-ru.html">🇷🇺 Русский</a>
-            <a href="delete-account-zh.html">🇨🇳 中文</a>
-            <a href="delete-account-ar.html">🇸🇦 العربية</a>
-        </div>
-    </div>
+    <footer class="site-footer">
+        <p>© 2026 RoomFit – جميع الحقوق محفوظة.</p>
+    </footer>
 </body>
 </html>
